@@ -1,0 +1,71 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ('../partials/head') %>
+    <style>
+        table {
+            border-collapse: collapse;
+          }
+      
+          td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            vertical-align: center;
+          }
+
+          th {
+            padding: 10px;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            vertical-align: center;
+          }
+
+        img {
+            max-width: 200px; /* Set the maximum width */
+            max-height: 150px; /* Set the maximum height */
+          }
+    </style>
+</head>
+<body class="container">
+
+    <header>
+        <%- include ('../partials/header') %>
+    </header>
+
+    <main>
+        <div class="jumbotron">
+            <h2>List of foods</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Food</th>
+                        <th>Image</th>
+                        <th>Last update</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% foods.forEach(food => { %>
+                        <tr>
+                            <td><%= food.foodname %></td>
+                            <td><img src="<%= food.foodimage%>" alt="<%= food.foodname%>" ></td>
+                            <td><%= food.lastUpdate.toLocaleDateString('en-GB') %></td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <%- include ('../partials/footer') %>
+    </footer>
+
+</body>
+</html>

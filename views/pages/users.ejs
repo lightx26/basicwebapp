@@ -1,0 +1,46 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ('../partials/head') %>
+</head>
+<body class="container">
+
+    <header>
+        <%- include ('../partials/header') %>
+    </header>
+
+    <main>
+        <div class="jumbotron">
+            <h2>List of users</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Name</th>
+                        <th>Date of birth</th>
+                        <th>Create Time</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% users.forEach(user => { %>
+                        <tr>
+                            <td><%= user.username %></td>
+                            <td><%= user.name %></td>
+                            <td><%= user.dateofbirth.toLocaleDateString('en-GB') %></td>
+                            <td><%= user.createTime.toLocaleDateString('en-GB') %></td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <%- include ('../partials/footer') %>
+    </footer>
+
+</body>
+</html>
