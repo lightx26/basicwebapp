@@ -41,7 +41,12 @@
     <main>
         <div class="jumbotron">
             <h2>List of foods</h2>
-            <table class="table">
+            <div>
+                <input type="text" id="searchInput" placeholder="Search...">
+                <button onclick="search()">Search</button>
+            </div>
+
+            <table class="table" id="searchResults">
                 <thead>
                     <tr>
                         <th>Food</th>
@@ -54,12 +59,58 @@
                     <% foods.forEach(food => { %>
                         <tr>
                             <td><%= food.foodname %></td>
-                            <td><img src="<%= food.foodimage%>" alt="<%= food.foodname%>" ></td>
+                            <td><img src="<%= food.foodimage %>" alt="<%= food.foodname %>"></td>
                             <td><%= food.lastUpdate.toLocaleDateString('en-GB') %></td>
                         </tr>
-                        <% }) %>
+                    <% }) %>
                 </tbody>
             </table>
+
+            <script>
+                function search() {
+                    var searchQuery = document.getElementById('searchInput').value;
+                    var searchResultsContainer = document.getElementById('searchResults');
+
+                    searchResultsContainer.innerHTML = `
+                    <tr>
+                        <th>Food</th>
+                        <th>Image</th>
+                        <th>Last update</th>
+                    </tr>
+                    `;
+
+                    var results = JSON.parse('<%- JSON.stringify(foods) %>');
+
+                    console.log(results);
+
+                    results.forEach(food => {
+
+                        if (food.foodname.includes(searchQuery)) {
+                        
+                            var row = document.createElement('tr');
+
+                            var nameCell = document.createElement('td');
+                            nameCell.textContent = food.foodname;
+                            row.appendChild(nameCell);
+
+                            var imageCell = document.createElement('td');
+                            var imgsource = document.createElement('img');
+                            imgsource.src = food.foodimage;
+                            imgsource.style.maxWidth = '200px';
+                            imgsource.style.maxHeight = '150px';
+                            imageCell.appendChild(imgsource);
+                            row.appendChild(imageCell);
+                    
+                            var dateCell = document.createElement('td');
+                            const ndate = new Date(food.lastUpdate);
+                            dateCell.textContent = ndate.toLocaleDateString('en-GB');
+                            row.appendChild(dateCell);
+                    
+                            searchResultsContainer.appendChild(row);
+                        }
+                    })
+                }
+            </script>
         </div>
     </main>
 
