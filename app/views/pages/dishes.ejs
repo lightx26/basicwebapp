@@ -1,0 +1,56 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ('../partials/head') %>
+    <link rel="stylesheet" href="../assets/css/dishes.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit&family=Merriweather:ital,wght@1,700&display=swap">
+</head>
+<body class="container">
+
+    <header>
+        <%- include ('../partials/header') %>
+    </header>
+
+    <main>
+        <div class="jumbotron">
+            <div class="menu-header">
+                <h2 id="menuTitle">Served Daily</h2>
+                <form action="/dishes/search" method="GET">
+                    <input type="text" name="name" placeholder="Search">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+
+            <table class="table" id="searchResults">
+                <thead>
+                    <tr>
+                        <th>Dish</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% dishes.forEach(dish => { %>
+                        <tr>
+                            <td>
+                                <div class="dishInfo">
+                                    <div class="dishName"> <%= dish.dish_name %> </div>
+                                    <span class="dishCategory"> <%= dish.category_name %> </span>
+                                </div>
+                            </td>
+                            <td><%= dish.price %>$</td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <%- include ('../partials/footer') %>
+    </footer>
+
+</body>
+</html>

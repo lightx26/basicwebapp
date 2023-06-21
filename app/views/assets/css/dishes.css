@@ -1,0 +1,77 @@
+#menuTitle {
+    font-family: 'Merriweather', serif;
+    font-size: 40px;
+}
+
+.menu-header {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .menu-header h2 {
+    margin: 0;
+  }
+  
+  .menu-header form {
+    display: flex;
+    align-items: center;
+  }
+  
+  .menu-header input[type="text"] {
+    margin-right: 10px;
+  }
+  
+  .menu-header button {
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+  }
+
+table {
+    margin-top: 20px;
+}
+
+td {
+    font-family: 'Kanit', sans-serif;
+    font-weight: lighter;
+    font-size: 20px;
+    padding: 10px;
+    text-align: left;
+    vertical-align: center;
+}
+
+th {
+    font-family: 'Kanit', sans-serif;
+    font-weight: bold;
+    font-size: 25px;
+    padding: 10px;
+    text-align: left;
+    vertical-align: center;
+}
+
+img {
+    max-width: 200px; /* Set the maximum width */
+    max-height: 150px; /* Set the maximum height */
+}
+
+.jumbotron {
+    padding-top: 10px;
+}
+
+.menuDisplay {
+    font-family: 'Kanit', sans-serif;
+}
+
+.dishCategory {
+    font-family: 'Kanit', sans-serif;
+    font-size: 15px; 
+    display: inline-block;
+    background-color: #6161ff;
+    border-radius: 25% 10%;
+    color: #333;
+    padding: 4px 8px;;
+}
